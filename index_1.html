@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="sample">
+        <input type="text" v-on:input="name = $event.target.value" v-bind:value="name">
+        <hr>
+        <h2 v-if="showName">Hello, {{ name }}</h2>
+        <button v-on:click = "showName = !showName">blyams_1!</button> <!-- using js-code in directive -->
+        <button v-on:click = "blyams">blyams_2!</button> <!-- using js-method with name from "methods" -->
+      </div>
+    </div>
+    <script>
+      let sample = new Vue({
+        el: '.sample',
+        data: {
+          name: 'Default',
+          showName: true //added v-if directive
+        },
+        methods: {
+          blyams(){ // added special method for button blyams_2 int spesial part of this Vue-part
+            this.showName = !this.showName; //"this" must be in method and mustn't be in js-code in html with directive 
+          }
+        },
+      });
+    </script>
+  </body>
+</html>

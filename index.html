@@ -11,14 +11,15 @@
     <div class="wrapper">
       <div class="sample">
         <input type="text" v-on:input="name = $event.target.value" v-bind:value="name">
+        <!--- added v-on and v-bind directives --->
         <hr>
         <h2>Hello, {{ name }}</h2>
       </div>
     </div>
     <script>
       let sample = new Vue({
-        el: '.sample',
-        data: {
+        el: '.sample', // this vue-part is used only for first html-element with className = "sample"
+        data: { // data attributes used for this vue-part, see str 13 and 16
           name: 'Default'
         }
       });
