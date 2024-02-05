@@ -10,16 +10,16 @@
   <body>
     <div class="wrapper">
       <div class="sample">
-        <input type="text">
+        <input type="text" v-on:input="name = $event.target.value" v-bind:value="name">
         <hr>
         <h2>Hello, {{ name }}</h2>
       </div>
     </div>
     <script>
-      new Vue({
+      let sample = new Vue({
         el: '.sample',
         data: {
-          name: 'Danila'
+          name: 'Default'
         }
       });
     </script>
