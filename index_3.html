@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!-- comparison of methods and computed-methods -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="sample">
+        <input type="text" v-model="firstName"> <!-- using v-model directive -->
+        <input type="text" v-model="lastName">
+        <hr>
+        <!-- comparison of methods and computed-methods -->
+        <h2>Hello, {{ firstName }} {{ lastName }}</h2> <!-- using simple variuables -->
+        <h2>Hello, {{ fullName() }}</h2> <!-- using method for projection -->
+        <h2>Hello, {{ fullNameComputed }}</h2> <!-- using computed-method for projection -->
+        <button v-on:click = "showText = !showText">blyams!</button>
+        <div v-show="showText">Some text</div> <!-- test of method rendering in browser -->
+      </div>
+    </div>
+    <script>
+      let sample = new Vue({
+        el: '.sample',
+        data: {
+          firstName: '',
+          lastName: '',
+          showText: false
+        },
+        //comparison of methods and computed-methods
+        methods: {
+          fullName(){ // special method for projection full name in h2
+            console.log('render fullname_method') //test output to consol for rendering with method
+            return this.firstName + ' ' + this.lastName;
+          }
+        },
+        computed: {
+          fullNameComputed(){ // special computed-method for projection full name in h2
+            console.log('render fullname_computed') //test output to consol for rendering with computed-method
+            return this.firstName + ' ' + this.lastName;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
