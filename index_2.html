@@ -12,7 +12,9 @@
       <div class="sample">
         <input type="text" v-on:input="name = $event.target.value" v-bind:value="name">
         <hr>
-        <h2 v-if="showName">Hello, {{ name }}</h2>
+        <h2 v-if="showName">Hello, {{ name }}</h2> <!-- using v-if directive -->
+        <h2 v-else>Hello, Masroom</h2> <!-- using v-else directive for v-if -->
+        <h2 v-show="showName">Hello, {{ name }}</h2> <!-- using v-show directive WARN: v-show doesn't have aalog of v-else  -->
         <button v-on:click = "showName = !showName">blyams_1!</button> <!-- using js-code in directive -->
         <button v-on:click = "blyams">blyams_2!</button> <!-- using js-method with name from "methods" -->
       </div>
@@ -22,11 +24,11 @@
         el: '.sample',
         data: {
           name: 'Default',
-          showName: true //added v-if directive
+          showName: true //added v-if and v-show directive
         },
         methods: {
-          blyams(){ // added special method for button blyams_2 int spesial part of this Vue-part
-            this.showName = !this.showName; //"this" must be in method and mustn't be in js-code in html with directive 
+          blyams(){ 
+            this.showName = !this.showName; 
           }
         },
       });
