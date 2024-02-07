@@ -11,16 +11,44 @@
     <div class="wrapper">
       <div class="sample">
         <hr>
+        <button v-on:click="addNumber">Добавить</button> <!-- button for using function addNumber -->
+        <ul>
+            <li v-for="(number, index) in numbers"> <!-- using for projection of numbers and their indexes of numbers-array -->
+                {{ number + ' ' + a }}
+            </li>
+        </ul>
+        <table>
+            <tr v-for="(el, i) in info"> <!-- using for projection of info-elements -->
+                <td> {{ i }} </td>
+                <td> {{ el.name }} </td>
+                <td> {{ el.dateOfBirth }} </td>
+            </tr>
+        </table>
       </div>
     </div>
     <script>
       let sample = new Vue({
         el: '.sample',
-        data: {
-
+        data: { // some data for testing
+            numbers: [0, 1, 2],
+            a: 0,
+            info: [{
+                name: "Danila",
+                dateOfBirth: "06.08.2003"
+            }, 
+            {
+                name: "Daniil",
+                dateOfBirth: "11.06.2003"
+            }]
         },
-        },
-      );
+        methods:{ // function for adding number to array
+            addNumber(){
+                this.numbers.push(this.a);
+                this.a = this.a + 1;
+            }
+        }
+    },
+    );
     </script>
   </body>
 </html>
