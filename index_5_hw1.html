@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- comparison of methods and computed-methods -->
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -10,10 +9,12 @@
   <body>
     <div class="wrapper">
         <div class="sample">
+    <div v-if="pg_1">
+
     <table>
         <tr>
             <th>E-mail:</th>
-            <td><input type="email" name="email" v-on:input="userEmail = $event.target.value"></td>
+            <td><input type="email" name="email" v-on:input="userEmail = $event.target.value" v-bind:value = "userEmail"></td>
         </tr>
         <tr>
             <th>Имя:</th>
@@ -35,6 +36,8 @@
             <td><input type="text" width="50px" v-on:input="chngGuest($event.target.value, i)"></td>
         </tr>
     </table>
+    </div>
+    <button v-on:click="pg_1 = !pg_1">Отправить</button>
         </div>
         </div>
     <script>
