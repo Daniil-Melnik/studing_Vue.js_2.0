@@ -18,22 +18,22 @@
         </tr>
         <tr>
             <th>Имя:</th>
-            <td><input type="text" name="fname" v-on:input="userFirstName = $event.target.value"></td>
+            <td><input type="text" name="fname" v-on:input="userFirstName = $event.target.value" v-bind:value = "userFirstName"></td>
         </tr>
         <tr>
             <th>Фамилия:</th>
-            <td><input type="text" name="lname" v-on:input="userLastName = $event.target.value"></td>
+            <td><input type="text" name="lname" v-on:input="userLastName = $event.target.value" v-bind:value = "userLastName"></td>
         </tr>
         <tr>
             <th>Моб. телефон:</th>
-            <td><input type="tel" name="phone" v-on:input="userPhoneNumber = $event.target.value"></td>
+            <td><input type="tel" name="phone" v-on:input="userPhoneNumber = $event.target.value" v-bind:value = "userPhoneNumber"></td>
         </tr>
     </table>
     <button v-on:click="addGuest">Добавить гостя</button>
     <table>
         <tr v-for="(g, i) in gests">
             <th>Гость {{ i + 1 }}</th>
-            <td><input type="text" width="50px" v-on:input="chngGuest($event.target.value, i)"></td>
+            <td><input type="text" width="50px" v-on:input="chngGuest($event.target.value, i)" v-bind:value = "g.name"></td>
         </tr>
     </table>
     </div>
