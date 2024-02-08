@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!-- comparison of methods and computed-methods -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+        <div class="sample">
+    <table>
+        <tr>
+            <th>E-mail:</th>
+            <td><input type="email" name="email" v-on:input="userEmail = $event.target.value"></td>
+        </tr>
+        <tr>
+            <th>Имя:</th>
+            <td><input type="text" name="fname" v-on:input="userFirstName = $event.target.value"></td>
+        </tr>
+        <tr>
+            <th>Фамилия:</th>
+            <td><input type="text" name="lname" v-on:input="userLastName = $event.target.value"></td>
+        </tr>
+        <tr>
+            <th>Моб. телефон:</th>
+            <td><input type="tel" name="phone" v-on:input="userPhoneNumber = $event.target.value"></td>
+        </tr>
+    </table>
+    <button v-on:click="addGuest">Добавить гостя</button>
+    <table>
+        <tr v-for="(g, i) in gests">
+            <th>Гость {{ i + 1 }}</th>
+            <td><input type="text" width="50px" v-on:input="chngGuest($event.target.value, i)"></td>
+        </tr>
+    </table>
+        </div>
+        </div>
+    <script>
+      let sample = new Vue({
+        el: '.sample',
+        data: {
+            pg_1: true,
+            nGests: 1,
+            gests: [{name: ""}],
+            userFirstName: "",
+            userLastName: "",
+            userEmail: "",
+            userPhoneNumber: ""
+        },
+        methods:{
+            addGuest(){
+                this.nGests += 1;
+                this.gests.push({name: ""});
+            },
+            chngGuest(s, i){
+                this.gests[i].name = s;
+            }
+        }
+    },
+    );
+    </script>
+  </body>
+</html>
