@@ -25,7 +25,7 @@ input {
     font-size: 20px;
 }
 
-.sample {
+.pg_1 {
     position: absolute;
     margin-left: 40%;
     width: 50%;
@@ -42,17 +42,19 @@ label {
 }
 
 .image-button {
-    width: 48px;
-    height: 48px;
+    width: 45px;
+    height: 45px;
     border: none;
-    background-color: white;
+    /*background-color: white;*/
+    background-color:rgba(255, 255, 255, 0);
     background-image: url('./images/add.png');
     background-size: cover;
     border-radius: 50%;
+    transition: 0.5s;
   }
 
   .image-button:hover {
-    background-color: #becaff;
+    transform: scale(1.2);
   }
 
   #add_div {
@@ -79,5 +81,66 @@ label {
   #send_btn:hover{
     background-color: rgb(108, 25, 255);
   }
-  
+
+  #reset_btn {
+    width: 48px;
+    height: 48px;
+    border: none;
+    background-color:rgba(255, 255, 255, 0);
+    background-image: url('./images/return.png');
+    background-size: cover;
+    border-radius: 50%;
+    transition: 0.5s;
+  }
+
+  #reset_btn:hover {
+    transform: scale(1.2);
+  }
+
+  .all_done {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+  }
+
+  .done_table {
+    width: 800px;
+    /*border-collapse: collapse;*/
+    border: 1px solid silver;
+    border-radius: 5px;
+    margin-left: 25%;
+  }
+
+  .done_table tr {
+    border: 1px solid silver;
+  }
+
+  .done_table td {
+    border: 1px solid silver;
+    border-radius: 5px;
+  }
+
+  .done_table th {
+    border: 1px solid silver;
+    width: 250px;
+    border-radius: 5px;
+  }
+
+  .main_el {
+    height: 30px;
+  }
+
+  #gest_el {
+    height: 100px;
+  }
+
+  #gest_el table {
+    width: 500px;
+    height: auto;
+    margin-left: 4%;
+  }
+
+  #gest_el table td {
+    height: 25px;
+  }
 

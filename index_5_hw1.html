@@ -10,7 +10,7 @@
   <body>
     <div class="wrapper">
         <div class="sample">
-            <div v-if="pg_1">
+            <div v-if="pg_1" class="pg_1">
                 <div class="section">
                     <label for="email">E-mail:</label>
                     <input type="email" name="email" v-on:input="userEmail = $event.target.value" v-bind:value = "userEmail">
@@ -39,34 +39,37 @@
     
     
     <div class="gest_container">
-    <div class="gest" v-for="(g, i) in gests" v-on:dblclick="gests.splice(i, 1)">
+    <div class="gest" v-for="(g, i) in gests" v-on:dblclick="gests.splice(i, 1); nGests-=1">
         <label for="gest">Гость {{ i + 1 }}</label>
         <input type="text" name="gest" width="50px" v-on:input="chngGuest($event.target.value, i)" v-bind:value = "g.name">
     </div>
     </div>
+        <button id="send_btn" v-on:click="pg_1 = !pg_1">Отправить</button>
     </div>
-    <div v-else>
-        <table>
-            <tr>
-                <th>E-mail:</th>
-                <td>{{ userEmail }}</td>
+    <div v-else class="all_done">
+        <p style="font-size: 35px">Всё готово!</p>
+        <table class="done_table">
+            <tr class="main_el">
+                <th class=".table_el_h">E-mail:</th>
+                <td class=".table_el_d">{{ userEmail }}</td>
             </tr>
-            <tr>
-                <th>Имя:</th>
-                <td>{{ userFirstName }}</td>
+            <tr class="main_el">
+                <th class=".table_el_h">Имя:</th>
+                <td class=".table_el_d">{{ userFirstName }}</td>
             </tr>
-            <tr>
-                <th>Фамилия:</th>
-                <td>{{ userLastName }}</td>
+            <tr class="main_el">
+                <th class=".table_el_h">Фамилия:</th>
+                <td class=".table_el_d">{{ userLastName }}</td>
             </tr>
-            <tr>
-                <th>Моб. телефон</th>
-                <td>{{ userPhoneNumber }}</td>
+            <tr class="main_el">
+                <th class=".table_el_h">Моб. телефон</th>
+                <td class=".table_el_d">{{ userPhoneNumber }}</td>
             </tr>
-            <tr>
+            <tr id="gest_el">
                 <th>Гости:</th>
                 <td>
-                    <table>
+                    <p v-if="nGests == 0">Гостей нет</p>
+                    <table v-else>
                         <tr v-for="g in gests">
                             <td>{{ g.name }}</td>
                         </tr>
@@ -74,8 +77,9 @@
                 </td>
             </tr>
         </table>
+        <button id="reset_btn" v-on:click="pg_1 = !pg_1"></button>
     </div>
-    <button id="send_btn" v-on:click="pg_1 = !pg_1">Отправить</button>
+    
         </div>
         </div>
     <script>
