@@ -4,35 +4,40 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css">
-    <title>Document</title>
+    <title>HW_1</title>
     <script src="./js/vue.js"></script>
   </head>
   <body>
     <div class="wrapper">
         <div class="sample">
-    <div v-if="pg_1">
-            <div class="section">
-                <label for="email">E-mail:</label>
-                <input type="email" name="email" v-on:input="userEmail = $event.target.value" v-bind:value = "userEmail">
-            </div>
-            
-            <div class="section">
-                <label for="fname">Имя:</label>
-                <input type="text" name="fname" v-on:input="userFirstName = $event.target.value" v-bind:value = "userFirstName">
-            </div>
+            <div v-if="pg_1">
+                <div class="section">
+                    <label for="email">E-mail:</label>
+                    <input type="email" name="email" v-on:input="userEmail = $event.target.value" v-bind:value = "userEmail">
+                </div>
+                    
+                <div class="section">
+                    <label for="fname">Имя:</label>
+                    <input type="text" name="fname" v-on:input="userFirstName = $event.target.value" v-bind:value = "userFirstName">
+                </div>
 
-            <div class="section">
-                <label for="lname">Фамилия:</label>
-                <input type="text" name="lname" v-on:input="userLastName = $event.target.value" v-bind:value = "userLastName">
-            </div>
+                <div class="section">
+                    <label for="lname">Фамилия:</label>
+                    <input type="text" name="lname" v-on:input="userLastName = $event.target.value" v-bind:value = "userLastName">
+                </div>
+            
+                <div class="section">
+                    <label for="phone">Моб. телефон:</label>
+                    <input type="tel" name="phone" v-on:input="userPhoneNumber = $event.target.value" v-bind:value = "userPhoneNumber">
+                </div>
+            
+
+    <div id="add_div">
+        Гость
+        <button v-on:click="addGuest" class="image-button"></button>
+    </div>
     
-            <div class="section">
-                <label for="phone">Моб. телефон:</label>
-                <input type="tel" name="phone" v-on:input="userPhoneNumber = $event.target.value" v-bind:value = "userPhoneNumber">
-            </div>
-            
-
-    <button v-on:click="addGuest">Добавить гостя</button>
+    
     <div class="gest_container">
     <div class="gest" v-for="(g, i) in gests" v-on:dblclick="gests.splice(i, 1)">
         <label for="gest">Гость {{ i + 1 }}</label>
@@ -70,7 +75,7 @@
             </tr>
         </table>
     </div>
-    <button v-on:click="pg_1 = !pg_1">Отправить</button>
+    <button id="send_btn" v-on:click="pg_1 = !pg_1">Отправить</button>
         </div>
         </div>
     <script>
