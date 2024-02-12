@@ -133,3 +133,14 @@
 	width: 12px;
 	height: 12px;
 }
+
+.alert-info {
+	color:#31708f;
+	background-color:#d9edf7;
+	border-color:#bce8f1;
+	padding: 5px;
+	border-radius: 8px;
+	text-align: center;
+  	overflow-y: scroll;
+	height: 400px;
+}

@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1</title>
+    <link rel="stylesheet" href="css//bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link href="css/styles.css" rel="stylesheet">
+	<style>
+	    .content{
+			height: 300px;
+			overflow: auto;
+		}
+	</style>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="sample">
+            <form v-if="pg_1">
+					<div class="alert-info" @scroll="handleScroll">
+						<p>This text no one reads. This text no one reads. This text no one reads.</p>
+						<p>This text no one reads. This text no one reads. This text no one reads.</p>
+						<p>This text no one reads. This text no one reads. This text no one reads.</p>
+						<p>This text no one reads. This text no one reads. This text no one reads.</p>
+						<p>This text no one reads. This text no one reads. This text no one reads.</p>
+						<p>This text no one reads. This text no one reads. This text no one reads.</p>
+						<p>This text no one reads. This text no one reads. This text no one reads.</p>
+						<p>This text no one reads. This text no one reads. This text no one reads.</p>
+						<p>This text no one reads. This text no one reads. This text no one reads.</p>
+						<p>This text no one reads. This text no one reads. This text no one reads.</p>
+						<p>This text no one reads. This text no one reads. This text no one reads.</p>
+						<p>This text no one reads. This text no one reads. This text no one reads.</p>
+						<p>This text no one reads. This text no one reads. This text no one reads.</p>
+						<p>This text no one reads. This text no one reads. This text no one reads.</p>
+						<p>This text no one reads. This text no one reads. This text no one reads.</p>
+						<p>This text no one reads. This text no one reads. This text no one reads.</p>
+						<p>This text no one reads. This text no one reads. This text no one reads.</p>
+						<p>This text no one reads. This text no one reads. This text no one reads.</p>
+						<p>This text no one reads. This text no one reads. This text no one reads.</p>
+						<p>This text no one reads. This text no one reads. This text no one reads.</p>
+					</div>
+				<div v-if="hasScrolledToBottom" class="form-check">
+					<label class="form-check-label">
+						<input class="form-check-input" type="checkbox" @change="agree1 = !agree1"> I agree this text
+					</label>
+		        </div>
+				<div v-if="hasScrolledToBottom" class="form-check">
+					<label class="form-check-label">
+						<input class="form-check-input" type="checkbox" @change="agree = !agree"> Send me spam
+					</label>					
+		        </div>
+				
+		        <div class="form-check">
+					<label v-if="agree" class="form-check-label">
+						<input class="form-check-input" type="radio" name="1" value="Send me spam on Email" @change="spam ='Email'">Send me spam on Email
+					</label>
+				</div>
+				<div class="form-check" v-if="agree">
+					<label class="form-check-label">
+						<input class="form-check-input" type="radio" name="1" value="Send me spam on Phone" @change="spam = 'Phone'">Send me spam on Phone
+					</label>
+				</div>
+			    <hr>
+				<button class="btn btn-primary" v-if="agree1" v-on:click="pg_1 = !pg_1">
+					Send Data
+				</button>
+			</form>
+			<div v-else>
+				<table class="table table-bordered">
+					<div>
+					<tr v-if="agree1">
+						<th>I agree this text</th>
+						<td>+</td>
+					</tr>
+					<tr v-else>
+						<th>I agree this text</th>
+						<td>-</td>
+					</tr>
+					</div>
+					<div>
+						<tr v-if="agree">
+							<th>Send me spam</th>
+							<td>+</td>
+						</tr>
+						<tr v-else>
+							<th>Send me spam</th>
+							<td>-</td>
+						</tr>
+					</div>
+					<div>
+						<tr v-if="agree">
+							<th>Send me spam on</th>
+							<td>{{ spam }}</td>
+						</tr>
+					</div>					
+				</table>
+			</div> 
+		</div>
+    </div>
+	<script>
+		
+		new Vue({
+			el: '.sample',
+			data: {
+				hasScrolledToBottom: false,
+				agree: false,
+				agree1: false,
+				spam : "",
+				pg_1 : true,
+			},
+			methods: {
+				handleScroll: function(el) {
+					if((el.srcElement.offsetHeight + el.srcElement.scrollTop) >= el.srcElement.scrollHeight) {
+					this.hasScrolledToBottom = true;
+					}
+				}
+			},
+		});
+
+	</script>
+</body>
+</html>
