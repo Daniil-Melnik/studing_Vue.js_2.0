@@ -22,11 +22,11 @@
 				<div>
 					<div class="form-group">
 	                    <label>Name</label>
-	                    <input type="text" class="form-control-none">
+	                    <input type="text" v-on:input="controlName($event.target.value)" :class="[isContactStyle['name']]">
 	                </div>
 					<div class="form-group">
 	                    <label>Phone</label>
-	                    <input type="text" class="form-control-none">
+	                    <input type="text" v-on:input="controlPhone($event.target.value)" :class="[isContactStyle['phone']]">
 	                </div>
 					<div class="form-group">
 	                    <label>Email</label>
@@ -34,11 +34,11 @@
 	                </div>
 					<div class="form-group">
 	                    <label>Some Field 1</label>
-	                    <input type="text" class="form-control-none">
+	                    <input type="text" v-on:input="controlSf1($event.target.value)" :class="[isContactStyle['sf1']]">
 	                </div>
 					<div class="form-group">
 	                    <label>Some Field 2</label>
-	                    <input type="text" class="form-control-none">
+	                    <input type="text" v-on:input="controlSf2($event.target.value)" :class="[isContactStyle['sf2']]">
 	                </div>
 				</div>
 				<button class="btn btn-primary">
@@ -88,11 +88,15 @@
 					}
 				],
 				userEmail: "",
+				userName: "",
+				userPhone: "",
+				userSf1: "",
+				userSf2: "",
 				completeFields:0,
 				progressNo: "progressNo_0",
 				spn: 0,
 				isContact: {'name' : false, 'phone' : false, 'sf1' : false, 'sf2' : false},
-				isContactStyle: {'name' : "form-control-none", 'phone' : "form-control-none", 'sf1' : "form-control-none", 'sf2' : "form-control-none"}
+				isContactStyle: {'name' : "form-control-none", 'phone' : "form-control-none", 'email' :  "form-control-none", 'sf1' : "form-control-none", 'sf2' : "form-control-none"}
 			},
 			methods: {
 				chngFieldsNo(){
@@ -117,6 +121,70 @@
 					else {
 						this.isContact['email'] = false
 						this.isContactStyle['email'] = "form-control-bad"
+						console.log('0')
+					}
+					this.findNumOfTrue()
+					this.chngFieldsNo()
+				},
+
+				controlName(s){
+					this.userName = s
+					if (this.userName == "1"){
+						this.isContact['name'] = true
+						this.isContactStyle['name'] = "form-control-good"
+						console.log('1')
+					}
+					else {
+						this.isContact['name'] = false
+						this.isContactStyle['name'] = "form-control-bad"
+						console.log('0')
+					}
+					this.findNumOfTrue()
+					this.chngFieldsNo()
+				},
+
+				controlPhone(s){
+					this.userPhone = s
+					if (this.userPhone == "1"){
+						this.isContact['phone'] = true
+						this.isContactStyle['phone'] = "form-control-good"
+						console.log('1')
+					}
+					else {
+						this.isContact['phone'] = false
+						this.isContactStyle['phone'] = "form-control-bad"
+						console.log('0')
+					}
+					this.findNumOfTrue()
+					this.chngFieldsNo()
+				},
+
+				controlSf1(s){
+					this.userSf1 = s
+					if (this.userSf1 == "1"){
+						this.isContact['sf1'] = true
+						this.isContactStyle['sf1'] = "form-control-good"
+						console.log('1')
+					}
+					else {
+						this.isContact['sf1'] = false
+						this.isContactStyle['sf1'] = "form-control-bad"
+						console.log('0')
+					}
+					this.findNumOfTrue()
+					this.chngFieldsNo()
+				},
+
+				controlSf2(s){
+					this.userSf2 = s
+					if (this.userSf2 == "1"){
+						this.isContact['sf2'] = true
+						this.isContactStyle['sf2'] = "form-control-good"
+						console.log('1')
+					}
+					else {
+						this.isContact['sf2'] = false
+						this.isContactStyle['sf2'] = "form-control-bad"
 						console.log('0')
 					}
 					this.findNumOfTrue()
