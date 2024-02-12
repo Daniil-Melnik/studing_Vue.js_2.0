@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css">
+    <title>HW_1</title>
+    <script src="./js/vue.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+        <div class="sample">
+            <div v-if="pg_1" class="pg_1">
+                <div class="section">
+                    <label for="email">E-mail:</label>
+                    <input type="email" name="email" v-on:input="userEmail = $event.target.value" v-bind:value = "userEmail">
+                </div>
+                    
+                <div class="section">
+                    <label for="fname">Имя:</label>
+                    <input type="text" name="fname" v-on:input="userFirstName = $event.target.value" v-bind:value = "userFirstName">
+                </div>
+
+                <div class="section">
+                    <label for="lname">Фамилия:</label>
+                    <input type="text" name="lname" v-on:input="userLastName = $event.target.value" v-bind:value = "userLastName">
+                </div>
+            
+                <div class="section">
+                    <label for="phone">Моб. телефон:</label>
+                    <input type="tel" name="phone" v-on:input="userPhoneNumber = $event.target.value" v-bind:value = "userPhoneNumber">
+                </div>
+            
+
+    <div id="add_div">
+        Гость
+        <button v-on:click="addGuest" class="image-button"></button>
+    </div>
+    
+    
+    <div class="gest_container">
+    <div class="gest" v-for="(g, i) in gests" v-on:dblclick="gests.splice(i, 1); nGests-=1">
+        <label for="gest">Гость {{ i + 1 }}</label>
+        <input type="text" name="gest" width="50px" v-on:input="chngGuest($event.target.value, i)" v-bind:value = "g.name">
+    </div>
+    </div>
+        <button id="send_btn" v-on:click="pg_1 = !pg_1">Отправить</button>
+    </div>
+    <div v-else class="all_done">
+        <p style="font-size: 35px">Всё готово!</p>
+        <table class="done_table">
+            <tr class="main_el">
+                <th class=".table_el_h">E-mail:</th>
+                <td class=".table_el_d">{{ userEmail }}</td>
+            </tr>
+            <tr class="main_el">
+                <th class=".table_el_h">Имя:</th>
+                <td class=".table_el_d">{{ userFirstName }}</td>
+            </tr>
+            <tr class="main_el">
+                <th class=".table_el_h">Фамилия:</th>
+                <td class=".table_el_d">{{ userLastName }}</td>
+            </tr>
+            <tr class="main_el">
+                <th class=".table_el_h">Моб. телефон</th>
+                <td class=".table_el_d">{{ userPhoneNumber }}</td>
+            </tr>
+            <tr id="gest_el">
+                <th>Гости:</th>
+                <td>
+                    <p v-if="nGests == 0">Гостей нет</p>
+                    <table v-else>
+                        <tr v-for="g in gests">
+                            <td>{{ g.name }}</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <button id="reset_btn" v-on:click="pg_1 = !pg_1"></button>
+    </div>
+    
+        </div>
+        </div>
+    <script>
+      let sample = new Vue({
+        el: '.sample',
+        data: {
+            pg_1: true,
+            nGests: 1,
+            gests: [{name: ""}],
+            userFirstName: "",
+            userLastName: "",
+            userEmail: "",
+            userPhoneNumber: "",
+        },
+        methods:{
+            addGuest(){
+                this.nGests += 1;
+                this.gests.push({name: ""});
+            },
+            chngGuest(s, i){
+                this.gests[i].name = s;
+            }
+        },
+        beforeCreate() {
+            console.log('bc')
+        },
+
+        beforeMount() {
+            console.log('bm')
+        },
+        created() {
+            console.log('c')
+        },
+        mounted() {
+            console.log('m')
+        },
+        beforeUpdate() { // using beforeUpdate hook for validation of userFirstName
+            if (this.userFirstName == '1'){
+                console.log("ALL")
+            }
+            console.log('bu')
+        },
+        updated() {
+            console.log('u')
+        },
+    },
+    );
+    </script>
+  </body>
+</html>
