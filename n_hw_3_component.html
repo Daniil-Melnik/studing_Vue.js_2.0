@@ -20,10 +20,11 @@
 					</div>
 				</div>
 				<div>
-					<div class="form-group">
+					<!-- <div class="form-group">
 	                    <label>Name<img v-if="K[0]" :src="[isContactImg['name']]" class="ok_img"/></label>
 	                    <input type="text" v-on:input="controlName($event.target.value)" :class="[isContactStyle['name']]">
-	                </div>
+	                </div> -->
+					<cinput :maintext="name"></cinput>
 					<div class="form-group">
 	                    <label>Phone<img v-if="K[1]" :src="[isContactImg['phone']]" class="ok_img"/></label>
 	                    <input type="text" v-on:input="controlPhone($event.target.value)" :class="[isContactStyle['phone']]">
@@ -72,10 +73,36 @@
 		</div>
     </div>
 	<script>
+
+	Vue.component('cinput', {
+				props: ['maintext'],
+				template: `
+					<div class="form-group">
+	                    <label>{{maintext}}<img v-if="K" :src="[isContactImg]" class="ok_img"/></label>
+	                    <input type="text" v-on:input="controlName($event.target.value)" :class="[isContactStyle]">
+	                </div>
+				`,
+				data(){
+					return {
+						K: false,
+						isContactImg: "",
+						isContactStyle: "form-control-none"
+					}
+				},
+				methods: {
+					controlName(s){
+						console.log(s)
+					},
+					onClick(e){
+						this.$emit('plusplus');
+					}
+				}
+			});
 		
 		new Vue({
 			el: '.sample',
 			data: {
+				name : "Name",
 				userEmail: "",
 				userName: "",
 				userPhone: "",
