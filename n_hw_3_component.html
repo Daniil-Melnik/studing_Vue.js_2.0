@@ -13,66 +13,48 @@
     <div class="wrapper">
         <div class="sample">
 			<div v-if="pg">
-            <form>
-        		<div class="progress-n">
-					<div class="progress-bar-n">
-						<div :class="[progressNo]"></div>
+				<form>
+					<div class="progress-n">
+						<div class="progress-bar-n">
+							<div :class="[progressNo]"></div>
+						</div>
 					</div>
-				</div>
-				<div>
-					<!-- <div class="form-group">
-	                    <label>Name<img v-if="K[0]" :src="[isContactImg['name']]" class="ok_img"/></label>
-	                    <input type="text" v-on:input="controlName($event.target.value)" :class="[isContactStyle['name']]">
-	                </div> -->
-					<cinput :maintext="text[0]"
-							:indtxt="indtext[0]"
-							:reg="regs[0]"
-							@senddata = "receiveData"></cinput>
-					<div class="form-group">
-	                    <label>Phone<img v-if="K[1]" :src="[isContactImg['phone']]" class="ok_img"/></label>
-	                    <input type="text" v-on:input="controlPhone($event.target.value)" :class="[isContactStyle['phone']]">
-	                </div>
-					<div class="form-group">
-	                    <label>Email<img v-if="K[2]"  :src="[isContactImg['email']]" class="ok_img"/></label>
-	                    <input type="text" v-on:input="controlEmail($event.target.value)" :class="[isContactStyle['email']]">
-	                </div>
-					<div class="form-group">
-	                    <label>Some Field 1<img v-if="K[3]" :src="[isContactImg['sf1']]" class="ok_img"/></label>
-	                    <input type="text" v-on:input="controlSf1($event.target.value)" :class="[isContactStyle['sf1']]">
-	                </div>
-					<div class="form-group">
-	                    <label>Some Field 2<img v-if="K[4]"  :src="[isContactImg['sf2']]" class="ok_img"/></label>
-	                    <input type="text" v-on:input="controlSf2($event.target.value)" :class="[isContactStyle['sf2']]">
-	                </div>
-				</div>
+					<div>
+						<cinput v-for="(el, i) in info" :key="i"
+								:maintext="el.text"
+								:indtxt="el.indtext"
+								:reg="el.reg"
+								@senddata = "receiveData"></cinput>
+					</div>
+				</form>
 				<button class="btn btn-primary" :disabled='isBarBlocked' v-on:click="pg = !pg">
 					Send Data
 				</button>
-			</form>
 			</div>
-
-				<table v-else class="table table-bordered">
+			<div v-else>
+				<table class="table table-bordered">
 					<tr>
 						<th>Name</th>
-						<td>{{ userName }}</td>
+						<td>{{ userData['name'] }}</td>
 					</tr>
 					<tr>
 						<th>Phone</th>
-						<td>{{ userPhone }}</td>
+						<td>{{ userData['phone'] }}</td>
 					</tr>
 					<tr>
 						<th>Email</th>
-						<td>{{ userEmail }}</td>
+						<td>{{ userData['email'] }}</td>
 					</tr>
 					<tr>
 						<th>Some Field 1</th>
-						<td>{{ userSf1 }}</td>
+						<td>{{ userData['sf1'] }}</td>
 					</tr>
 					<tr>
-						<th>Some field 2</th>
-						<td>{{ userSf2 }}</td>
+						<th>Some Field 2</th>
+						<td>{{ userData['sf2'] }}</td>
 					</tr>
 				</table>
+			</div>
 		</div>
     </div>
 	<script>
@@ -113,13 +95,9 @@
 							this.sendPack()
 							console.log(this.isContact + "//")
 						}
-						
-						//this.findNumOfTrue()
-						//this.chngFieldsNo()
-						//this.spn === 5 ? this.isBarBlocked = false : this.isBarBlocked = true
 						},
 					sendPack(e){
-						this.$emit('senddata', this.indtxt , this.isContact);
+						this.$emit('senddata', this.indtxt , this.isContact, this.text);
 					}
 				}
 			});
@@ -127,23 +105,39 @@
 		new Vue({
 			el: '.sample',
 			data: {
-				text: ["Name", "Phone", "Email", "Some Field 1", "Some Field 2"],
-				indtext : ["name", "phone", "email", "sf1", "sf2"],
-				regs: [/^[a-zA-Z ]{2,30}$/],
-				userEmail: "",
-				userName: "",
-				userPhone: "",
-				userSf1: "",
-				userSf2: "",
+				userData: {'name': "", 'phone': "", 'email': "", 'sf1': "", 'sf2': ""},
 				isBarBlocked: true,
 				pg: true,
-				K: [false, false, false, false, false],
 				progressNo: "progressNo_0",
 				spn: 0,
 				isContact: {'name' : false, 'phone' : false, 'sf1' : false, 'sf2' : false, 'email' : false},
-				isContactFirst: {'name' : false, 'phone' : false, 'sf1' : false, 'sf2' : false, 'email' : false},
-				isContactStyle: {'name' : "form-control-none", 'phone' : "form-control-none", 'email' :  "form-control-none", 'sf1' : "form-control-none", 'sf2' : "form-control-none"},
-				isContactImg: {'name' : "", 'phone' : "", 'email' :  "", 'sf1' : "", 'sf2' : "", 'email' : ""}
+				info : [
+					{
+						text: "Name",
+						indtext: "name",
+						reg: /^[a-zA-Z ]{2,30}$/,
+					},
+					{
+						text: "Phone",
+						indtext: "phone",
+						reg: /^[0-9]{7,14}$/,
+					},
+					{
+						text: "Email",
+						indtext: "email",
+						reg: /.+/,
+					},
+					{
+						text: "Some Field 1",
+						indtext: "sf1",
+						reg: /.+/,
+					},
+					{
+						text: "Some Field 2",
+						indtext: "sf2",
+						reg: /.+/,
+					},
+				]
 			},
 
 			beforeCreate() {
@@ -164,108 +158,9 @@
 					this.isContact['email'] ? this.spn += 1 : this.spn += 0
 					this.isContact['sf2'] ? this.spn += 1 : this.spn += 0
 				},
-				controlEmail(s){
-					this.userEmail = s;
-					this.K[2] = true
-					if ((/.+/).test(this.userEmail)){
-						this.isContact['email'] = true
-						this.isContactStyle['email'] = "form-control-good"
-						this.isContactImg['email'] = "./images/ok.svg"
-						console.log('1')
-					}
-					else {
-						this.isContact['email'] = false
-						this.isContactStyle['email'] = "form-control-bad"
-						this.isContactImg['email'] = "./images/not_ok.png"
-						console.log('0')
-					}
-					this.findNumOfTrue()
-					this.chngFieldsNo()
-					this.spn === 5 ? this.isBarBlocked = false : this.isBarBlocked = true
-				},
-
-				controlName(s){
-					this.userName = s
-					this.K[0] = true
-					if ((/^[a-zA-Z ]{2,30}$/).test(this.userName)){
-						this.isContact['name'] = true
-						this.isContactStyle['name'] = "form-control-good"
-						this.isContactImg['name'] = "./images/ok.svg"
-						console.log('1')
-					}
-					else {
-						this.isContact['name'] = false
-						this.isContactStyle['name'] = "form-control-bad"
-						this.isContactImg['name'] = "./images/not_ok.png"
-						console.log('0')
-					}
-					this.findNumOfTrue()
-					this.chngFieldsNo()
-					this.spn === 5 ? this.isBarBlocked = false : this.isBarBlocked = true
-				},
-
-				controlPhone(s){
-					this.userPhone = s
-					this.K[1] = true
-					if ((/^[0-9]{7,14}$/).test(this.userPhone)){
-						this.isContact['phone'] = true
-						this.isContactStyle['phone'] = "form-control-good"
-						this.isContactImg['phone'] = "./images/ok.svg"
-						console.log('1')
-					}
-					else {
-						this.isContact['phone'] = false
-						this.isContactStyle['phone'] = "form-control-bad"
-						this.isContactImg['phone'] = "./images/not_ok.png"
-						console.log('0')
-					}
-					this.findNumOfTrue()
-					this.chngFieldsNo()
-					this.spn === 5 ? this.isBarBlocked = false : this.isBarBlocked = true
-				},
-
-				controlSf1(s){
-					this.userSf1 = s
-					this.K[3] = true
-					if ((/.+/).test(this.userSf1)){
-						this.isContact['sf1'] = true
-						this.isContactStyle['sf1'] = "form-control-good"
-						this.isContactImg['sf1'] = "./images/ok.svg"
-						console.log('1')
-					}
-					else {
-						this.isContact['sf1'] = false
-						this.isContactStyle['sf1'] = "form-control-bad"
-						this.isContactImg['sf1'] = "./images/not_ok.png"
-						console.log('0')
-					}
-					this.findNumOfTrue()
-					this.chngFieldsNo()
-					this.spn === 5 ? this.isBarBlocked = false : this.isBarBlocked = true
-				},
-
-				controlSf2(s){
-					this.userSf2 = s
-					this.K[4] = true
-					if ((/.+/).test(this.userSf2)){
-						this.isContact['sf2'] = true
-						this.isContactStyle['sf2'] = "form-control-good"
-						this.isContactImg['sf2'] = "./images/ok.svg"
-						console.log('1')
-					}
-					else {
-						this.isContact['sf2'] = false
-						this.isContactStyle['sf2'] = "form-control-bad"
-						this.isContactImg['sf2'] = "./images/not_ok.png"
-						console.log('0')
-					}
-					this.findNumOfTrue()
-					this.chngFieldsNo()
-					this.spn === 5 ? this.isBarBlocked = false : this.isBarBlocked = true
-				},
-
-				receiveData(ist, s){
+				receiveData(ist, s, str){
 					this.isContact[ist] = s
+					this.userData[ist] = str
 					this.findNumOfTrue()
 					this.chngFieldsNo()
 					this.spn === 5 ? this.isBarBlocked = false : this.isBarBlocked = true
