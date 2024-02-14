@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue Timer Directive</title>
+  <script src="js/vue.js"></script>
+</head>
+<body>
+    <div class="sample">
+        <p style="font-size: 20px;">1</p>
+        <p style="font-size: 20px;">2</p>
+        <p style="font-size: 38px;">3</p>
+    </div>
+    <script>
+Vue.directive('timer', {
+  bind: function (el, binding, vnode) {
+    let interval = binding.value.split('.')[0];
+    let count = binding.value.split('.')[1];
+    let run = binding.modifiers.run;
+
+    let timerFunction = function () {
+      el.style.fontSize = parseInt(window.getComputedStyle(el, null).getPropertyValue('font-size')) + 2 + 'px';
+      count--;
+      if(count === 0){
+        clearInterval(timer);
+      }
+    };
+
+    if (run) {
+      timerFunction();
+    }
+
+    let timer = setInterval(timerFunction, interval);
+
+    el.timer = timer;
+  },
+  unbind: function (el, binding, vnode) {
+    clearInterval(el.timer);
+    delete el.timer;
+  }
+});
+  
+      new Vue({
+        el: '.sample',
+        methods: {
+            onTimer: function () {
+                this.$refs.sample.style.fontSize = parseInt(window.getComputedStyle(this.$refs.sample, null).getPropertyValue('font-size')) + 2 + 'px';
+            }
+        }
+      });
+    </script>
+  </body>
+</html>
