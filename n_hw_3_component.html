@@ -24,7 +24,10 @@
 	                    <label>Name<img v-if="K[0]" :src="[isContactImg['name']]" class="ok_img"/></label>
 	                    <input type="text" v-on:input="controlName($event.target.value)" :class="[isContactStyle['name']]">
 	                </div> -->
-					<cinput :maintext="text[0]" :reg="regs[0]"></cinput>
+					<cinput :maintext="text[0]"
+							:indtxt="indtext[0]"
+							:reg="regs[0]"
+							@senddata = "receiveData"></cinput>
 					<div class="form-group">
 	                    <label>Phone<img v-if="K[1]" :src="[isContactImg['phone']]" class="ok_img"/></label>
 	                    <input type="text" v-on:input="controlPhone($event.target.value)" :class="[isContactStyle['phone']]">
@@ -75,7 +78,7 @@
 	<script>
 
 	Vue.component('cinput', {
-				props: ['maintext', 'reg'],
+				props: ['maintext', 'reg', 'indtxt'],
 				template: `
 					<div class="form-group">
 	                    <label>{{maintext}}<img v-if="K" :src="[isContactImg]" class="ok_img"/></label>
@@ -100,20 +103,23 @@
 							this.isContact = true
 							this.isContactStyle = "form-control-good"
 							this.isContactImg = "./images/ok.svg"
-							console.log('1')
+							this.sendPack()
+							console.log(this.isContact + "//")
 						}
 						else {
 							this.isContact = false
 							this.isContactStyle = "form-control-bad"
 							this.isContactImg = "./images/not_ok.png"
-							console.log('0')
+							this.sendPack()
+							console.log(this.isContact + "//")
 						}
+						
 						//this.findNumOfTrue()
 						//this.chngFieldsNo()
 						//this.spn === 5 ? this.isBarBlocked = false : this.isBarBlocked = true
 						},
-					onClick(e){
-						this.$emit('plusplus');
+					sendPack(e){
+						this.$emit('senddata', this.indtxt , this.isContact);
 					}
 				}
 			});
@@ -122,6 +128,7 @@
 			el: '.sample',
 			data: {
 				text: ["Name", "Phone", "Email", "Some Field 1", "Some Field 2"],
+				indtext : ["name", "phone", "email", "sf1", "sf2"],
 				regs: [/^[a-zA-Z ]{2,30}$/],
 				userEmail: "",
 				userName: "",
@@ -256,6 +263,13 @@
 					this.chngFieldsNo()
 					this.spn === 5 ? this.isBarBlocked = false : this.isBarBlocked = true
 				},
+
+				receiveData(ist, s){
+					this.isContact[ist] = s
+					this.findNumOfTrue()
+					this.chngFieldsNo()
+					this.spn === 5 ? this.isBarBlocked = false : this.isBarBlocked = true
+				}
 			}
 		});
 	</script>
