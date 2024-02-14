@@ -24,7 +24,7 @@
 	                    <label>Name<img v-if="K[0]" :src="[isContactImg['name']]" class="ok_img"/></label>
 	                    <input type="text" v-on:input="controlName($event.target.value)" :class="[isContactStyle['name']]">
 	                </div> -->
-					<cinput :maintext="name"></cinput>
+					<cinput :maintext="text[0]" :reg="regs[0]"></cinput>
 					<div class="form-group">
 	                    <label>Phone<img v-if="K[1]" :src="[isContactImg['phone']]" class="ok_img"/></label>
 	                    <input type="text" v-on:input="controlPhone($event.target.value)" :class="[isContactStyle['phone']]">
@@ -75,24 +75,43 @@
 	<script>
 
 	Vue.component('cinput', {
-				props: ['maintext'],
+				props: ['maintext', 'reg'],
 				template: `
 					<div class="form-group">
 	                    <label>{{maintext}}<img v-if="K" :src="[isContactImg]" class="ok_img"/></label>
-	                    <input type="text" v-on:input="controlName($event.target.value)" :class="[isContactStyle]">
+	                    <input type="text" v-on:input="controlText($event.target.value)" :class="[isContactStyle]">
 	                </div>
 				`,
 				data(){
 					return {
 						K: false,
 						isContactImg: "",
-						isContactStyle: "form-control-none"
+						text: "",
+						isContactStyle: "form-control-none",
+						isContact : "false",
+						isContactImg: "",
 					}
 				},
 				methods: {
-					controlName(s){
-						console.log(s)
-					},
+					controlText(s){
+						this.text = s
+						this.K = true
+						if ((this.reg).test(this.text)){
+							this.isContact = true
+							this.isContactStyle = "form-control-good"
+							this.isContactImg = "./images/ok.svg"
+							console.log('1')
+						}
+						else {
+							this.isContact = false
+							this.isContactStyle = "form-control-bad"
+							this.isContactImg = "./images/not_ok.png"
+							console.log('0')
+						}
+						//this.findNumOfTrue()
+						//this.chngFieldsNo()
+						//this.spn === 5 ? this.isBarBlocked = false : this.isBarBlocked = true
+						},
 					onClick(e){
 						this.$emit('plusplus');
 					}
@@ -102,7 +121,8 @@
 		new Vue({
 			el: '.sample',
 			data: {
-				name : "Name",
+				text: ["Name", "Phone", "Email", "Some Field 1", "Some Field 2"],
+				regs: [/^[a-zA-Z ]{2,30}$/],
 				userEmail: "",
 				userName: "",
 				userPhone: "",
