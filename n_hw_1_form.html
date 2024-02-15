@@ -20,7 +20,15 @@
 					</div>
 				</div>
 				<div>
-					<div class="form-group">
+					<!-- 
+						K[n]             - icon display condition
+						isContactImg[s]  - type of icon (good/bad)
+						controlSmth($event.target.value) - control-function of input-correctness
+									!!! "Smth" may be "Name", "Phone", "Email", "Sf1", "Sf2"
+						isContactStyle[s]- type-style of input (good/bad/none)
+									!!! "s" may be 'name', 'phone', 'email', 'sf1', 'sf2'
+					 -->
+					<div class="form-group"> <!-- typical div for input (may be separated component) -->
 	                    <label>Name<img v-if="K[0]" :src="[isContactImg['name']]" class="ok_img"/></label>
 	                    <input type="text" v-on:input="controlName($event.target.value)" :class="[isContactStyle['name']]">
 	                </div>
@@ -41,10 +49,10 @@
 	                    <input type="text" v-on:input="controlSf2($event.target.value)" :class="[isContactStyle['sf2']]">
 	                </div>
 				</div>
-				<button class="btn btn-primary" :disabled='isBarBlocked' v-on:click="pg = !pg">
-					Send Data
-				</button>
 			</form>
+			<button class="btn btn-primary" :disabled='isBarBlocked' v-on:click="pg = !pg">
+				Send Data
+			</button>
 			</div>
 
 				<table v-else class="table table-bordered">
@@ -72,7 +80,24 @@
 		</div>
     </div>
 	<script>
-		
+		/*
+			data values:
+			============
+			userEmail          - value of input-email
+			userName           - value of input-name
+			userPhone          - value of input-phone
+			userSf1            - value of input-some field 1
+			userSf2            - value of input-some field 2
+			isBarBlocked       - flag of blocking send-button
+			pg                 - flag of opened page
+			K                  - array of icon display conditions
+			progressNo         - className of progress-bar in dinamic
+			spn                - counter of correct inputs
+			isContact          - dictionary of input-correctness flags
+			isContactFirst     - dictionary of first-contact-input flags (when none-input class is used (one chance))
+			isContactStyle:    - dictionary of inputs styles (good/bad/none)
+			isContactImg       - dictionary of titels of inputs correctness icons (god/bad/none)
+		*/
 		new Vue({
 			el: '.sample',
 			data: {
