@@ -1,4 +1,6 @@
 <!doctype html>
+<!-- This document illustrates the creation and use of integrated components.
+	 Shows working with props and emits to interact between a component and its parent element -->
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -7,7 +9,7 @@
     <link rel="stylesheet" href="css//bootstrap.min.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link href="css/styles.css" rel="stylesheet">
-    <script src="js/vue.js"></script>
+    <script src="js/vue.js"></script> 
 </head>
 <body>
     <div class="wrapper">
@@ -20,6 +22,10 @@
 						</div>
 					</div>
 					<div>
+						<!-- using of cinput componrnt with cycle
+							 @senddata = "receiveData" - special method for emission
+							senddata - name in component (contains emit)
+							receiveData - method of main vue for changing main data-->
 						<cinput v-for="(el, i) in info" :key="i"
 								:maintext="el.text"
 								:indtxt="el.indtext"
@@ -58,15 +64,19 @@
 		</div>
     </div>
 	<script>
-
-	Vue.component('cinput', {
-				props: ['maintext', 'reg', 'indtxt'],
-				template: `
+	// Creating of component in page-script
+	Vue.component('cinput', { //cinput is title of new componrnt
+				props: ['maintext', 'reg', 'indtxt'], // props approved for use
+				//html-template of new component, used "maintext" from props, 
+				//"K", "isContactImg", "ok_img", "isContactStyle" from data of component (see further)
+				//"controlText($event.target.value)" from methods of component (see further)
+				template: ` 
 					<div class="form-group">
 	                    <label>{{maintext}}<img v-if="K" :src="[isContactImg]" class="ok_img"/></label>
 	                    <input type="text" v-on:input="controlText($event.target.value)" :class="[isContactStyle]">
 	                </div>
 				`,
+				//data-function for local-component values
 				data(){
 					return {
 						K: false,
@@ -77,23 +87,24 @@
 						isContactImg: "",
 					}
 				},
+				//local-component methods
 				methods: {
-					controlText(s){
-						this.text = s
-						this.K = true
-						if ((this.reg).test(this.text)){
-							this.isContact = true
-							this.isContactStyle = "form-control-good"
-							this.isContactImg = "./images/ok.svg"
-							this.sendPack()
-							console.log(this.isContact + "//")
+					controlText(s){ //method for changing styles, values of inputs
+						this.text = s //changing local-component value
+						this.K = true //changing local-component icon display condition
+						if ((this.reg).test(this.text)){ //using "reg" from props,
+														 //checking the correctness of the entered text using regexp
+							this.isContact = true //setting fill truth (used in emit function)
+							this.isContactStyle = "form-control-good" //setting good style
+							this.isContactImg = "./images/ok.svg" //setting good icon
+							this.sendPack() //callback for parent element (using emit) with global changes
+											//(correctness of input for progress bar and sendBtn)
 						}
 						else {
-							this.isContact = false
-							this.isContactStyle = "form-control-bad"
-							this.isContactImg = "./images/not_ok.png"
+							this.isContact = false //setting fill worth (used in emit function)
+							this.isContactStyle = "form-control-bad" //setting bad style
+							this.isContactImg = "./images/not_ok.png" //setting bad icon
 							this.sendPack()
-							console.log(this.isContact + "//")
 						}
 						},
 					sendPack(e){
