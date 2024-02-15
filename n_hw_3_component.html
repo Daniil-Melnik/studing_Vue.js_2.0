@@ -17,8 +17,8 @@
 			<div v-if="pg">
 				<form>
 					<div class="progress-n">
-						<div class="progress-bar-n">
-							<div :class="[progressNo]"></div>
+						<div class="progress-bar-n"> <!-- class all width of progress bar (grey + blue) -->
+							<div :class="[progressNo]"></div> <!-- class for changig width of progress-bar (only blue) -->
 						</div>
 					</div>
 					<div>
@@ -107,12 +107,27 @@
 							this.sendPack()
 						}
 						},
+					//special callback-function, used for communication to parent element 
 					sendPack(e){
+						//emit - calling a special method to invoke a counter method in the parent component
+						// !!! parent -> child => using props
+						// !!! child -> parent => using $emit
+						//'senddata' - special name for communocation between child and parent: senddata -> receiveData
+						//'indtxt', 'isContact', 'text' are passed sequentially to the parent method
 						this.$emit('senddata', this.indtxt , this.isContact, this.text);
 					}
 				}
 			});
-		
+			
+			/*
+				userData     - data about user
+				isBarBlocked - flag of blocking send-bar
+				pg           - flag of number of page
+				progressNo: "progressNo_0" - typical name of class for progress-bar (0 - num of correct inputs (this.spn))
+				spn          - number of correct inputs 
+				isContact    - array of correct-input flags
+				info         - inf-array of objects for inputs		
+			*/
 		new Vue({
 			el: '.sample',
 			data: {
@@ -124,9 +139,9 @@
 				isContact: {'name' : false, 'phone' : false, 'sf1' : false, 'sf2' : false, 'email' : false},
 				info : [
 					{
-						text: "Name",
-						indtext: "name",
-						reg: /^[a-zA-Z ]{2,30}$/,
+						text: "Name",            //title of input
+						indtext: "name",         //identifier of input
+						reg: /^[a-zA-Z ]{2,30}$/,//regexp to control correctness of input value
 					},
 					{
 						text: "Phone",
@@ -151,17 +166,12 @@
 				]
 			},
 
-			beforeCreate() {
-				this.isContactFirst = {'name' : false, 'phone' : false, 'sf1' : false, 'sf2' : false, 'email' : false}
-			},
 			methods: {
-				chngFieldsNo(){
+				chngFieldsNo(){ //class-computing for progress bar
 					this.progressNo = "progressNo_"
 					this.progressNo = this.progressNo + this.spn
-					console.log(this.isContactFirst['name'])
-					console.log(this.isContactFirst['email'])
 				},
-				findNumOfTrue(){
+				findNumOfTrue(){ //counting of correct inputs for progress-bar
 					this.spn = 0
 					this.isContact['name'] ? this.spn += 1 : this.spn += 0
 					this.isContact['phone'] ? this.spn += 1 : this.spn += 0
@@ -169,12 +179,12 @@
 					this.isContact['email'] ? this.spn += 1 : this.spn += 0
 					this.isContact['sf2'] ? this.spn += 1 : this.spn += 0
 				},
-				receiveData(ist, s, str){
-					this.isContact[ist] = s
-					this.userData[ist] = str
-					this.findNumOfTrue()
+				receiveData(ist, s, str){ // ~ this.indtxt , this.isContact, this.text from $emit from sendPack
+					this.isContact[ist] = s // changing main isContact array
+					this.userData[ist] = str // changing main userData
+					this.findNumOfTrue() // controls for progress-bar
 					this.chngFieldsNo()
-					this.spn === 5 ? this.isBarBlocked = false : this.isBarBlocked = true
+					this.spn === 5 ? this.isBarBlocked = false : this.isBarBlocked = true // control of blocking of bar
 				}
 			}
 		});
