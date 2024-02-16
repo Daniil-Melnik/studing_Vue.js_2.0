@@ -1,0 +1,102 @@
+[
+    {
+      "type" : "radio",
+      "title" : "Где делают самовары, ружья и пряники?",
+      "answers" : {
+        "в Твери" : false,
+        "где, где - в Вологде" : false,
+        "в Москве" : false,
+        "в Туле" : true
+      }
+    },
+    {
+        "type" : "radio",
+        "title" : "Как зовут кота у Булгакова?",
+        "answers" : {
+          "Бегемот" : true,
+          "Пушистик" : false,
+          "Алиса" : false,
+          "Ферзь" : false
+        }
+      },
+      {
+        "type" : "checkbox",
+        "title" : "Выберите из списка имена известных котов:",
+        "answers" : {
+          "Твикс" : true,
+          "Базилио" : true,
+          "Кашалот" : false,
+          "Гав" : true
+        }
+      },
+      {
+        "type" : "checkbox",
+        "title" : "Известные отечественые модели автомобилей",
+        "answers" : {
+          "Кузьмич" : false,
+          "Приора" : true,
+          "Жигули" : true,
+          "Тольятти" : false
+        }
+      },
+      {
+        "type" : "checkbox",
+        "title" : "Что кладут в рюкзак первокласснику?",
+        "answers" : {
+          "Линейку" : true,
+          "Штангенциркуль" : false,
+          "Фотоаппарат" : false,
+          "Микроскоп" : false
+        }
+      },
+      {
+        "type" : "radio",
+        "title" : "",
+        "answers" : {
+          "" : false,
+          "" : true,
+          "" : false,
+          "" : false
+        }
+      },
+      {
+        "type" : "checkbox",
+        "title" : ,
+        "answers" : {
+          "" : false,
+          "" : true,
+          "" : true,
+          "" : true
+        }
+      },
+      {
+        "type" : "radio",
+        "title" : ,
+        "answers" : {
+          "" : false,
+          "" : false,
+          "" : false,
+          "" : true
+        }
+      },
+      {
+        "type" : "checkbox",
+        "title" : ,
+        "answers" : {
+          "" : true,
+          "" : false,
+          "" : false,
+          "" : false
+        }
+      },
+      {
+        "type" : "radio",
+        "title" : ,
+        "answers" : {
+          "" : true,
+          "" : false,
+          "" : false,
+          "" : false
+        }
+      }
+  ]
