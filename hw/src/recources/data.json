@@ -1,102 +1,112 @@
 [
     {
+      "id" : 1,
       "type" : "radio",
       "title" : "Где делают самовары, ружья и пряники?",
-      "answers" : {
-        "в Твери" : false,
-        "где, где - в Вологде" : false,
-        "в Москве" : false,
-        "в Туле" : true
-      }
+      "answers" : [
+        {"ans" : "в Твери", "res" : false},
+        {"ans" : "где, где - в Вологде", "res" : false},
+        {"ans" : "в Москве", "res" : false},
+        {"ans" : "в Туле", "res" : true}
+      ]
     },
     {
+        "id" : 2,
         "type" : "radio",
         "title" : "Как зовут кота у Булгакова?",
-        "answers" : {
-          "Бегемот" : true,
-          "Пушистик" : false,
-          "Алиса" : false,
-          "Ферзь" : false
-        }
+        "answers" : [
+          {"ans" : "Бегемот", "res" : true},
+          {"ans" : "Пушистик", "res" : false},
+          {"ans" : "Алиса", "res" : false},
+          {"ans" : "Ферзь", "res" : false}
+        ]
       },
       {
+        "id" : 3,
         "type" : "checkbox",
         "title" : "Выберите из списка имена известных котов:",
-        "answers" : {
-          "Твикс" : true,
-          "Базилио" : true,
-          "Кашалот" : false,
-          "Гав" : true
-        }
+        "answers" : [
+          {"ans" : "Базилио", "res" : true},
+          {"ans" : "Твикс", "res" : true},
+          {"ans" : "Кашалот", "res" : false},
+          {"ans" : "Гав", "res" : true}
+        ]
       },
       {
+        "id" : 4,
         "type" : "checkbox",
         "title" : "Известные отечественые модели автомобилей",
-        "answers" : {
-          "Кузьмич" : false,
-          "Приора" : true,
-          "Жигули" : true,
-          "Тольятти" : false
-        }
+        "answers" : [
+          {"ans" : "Кузьмич", "res" : false},
+          {"ans" : "Приора", "res" : true},
+          {"ans" : "Жигули", "res" : true},
+          {"ans" : "Тольятти", "res" : false}
+        ]
       },
       {
+        "id" : 5,
         "type" : "checkbox",
         "title" : "Что кладут в рюкзак первокласснику?",
-        "answers" : {
-          "Линейку" : true,
-          "Штангенциркуль" : false,
-          "Фотоаппарат" : false,
-          "Микроскоп" : false
-        }
+        "answers" : [
+          {"ans" : "Линейку", "res" : true},
+          {"ans" : "Штангенциркуль", "res" : false},
+          {"ans" : "Фотоаппарат", "res" : false},
+          {"ans" : "Микроскоп", "res" : false}
+        ]
       },
       {
+        "id" : 6,
         "type" : "radio",
-        "title" : "",
-        "answers" : {
-          "" : false,
-          "" : true,
-          "" : false,
-          "" : false
-        }
+        "title" : "Вы любите оси?",
+        "answers" : [
+          {"ans" : "нет", "res" : false},
+          {"ans" : "да", "res" : true},
+          {"ans" : "не хочу отвечать", "res" : false},
+          {"ans" : "глупый вопрос", "res" : false}
+        ]
       },
       {
+        "id" : 7,
         "type" : "checkbox",
-        "title" : ,
-        "answers" : {
-          "" : false,
-          "" : true,
-          "" : true,
-          "" : true
-        }
+        "title" : "Какие факультеты есть в ЛЭТИ?",
+        "answers" : [
+          {"ans" : "Кафедра ТУС", "res" : false},
+          {"ans" : "ФЭА", "res" : true},
+          {"ans" : "ФКТИ", "res" : true},
+          {"ans" : "ФЭЛ", "res" : true}
+        ]
       },
       {
+        "id" : 8,
         "type" : "radio",
-        "title" : ,
-        "answers" : {
-          "" : false,
-          "" : false,
-          "" : false,
-          "" : true
-        }
+        "title" : "Какая идеология процветает в Грибном царстве??",
+        "answers" : [
+          {"ans" : "Коммунизм", "res" : false},
+          {"ans" : "Капитализм", "res" : false},
+          {"ans" : "Авторитаризм", "res" : false},
+          {"ans" : "Грибоедство", "res" : true}
+        ]
       },
       {
+        "id" : 9,
         "type" : "checkbox",
-        "title" : ,
-        "answers" : {
-          "" : true,
-          "" : false,
-          "" : false,
-          "" : false
-        }
+        "title" : "Староста любит",
+        "answers" : [
+          {"ans" : "Липтон", "res" : true},
+          {"ans" : "Крекеры", "res" : false},
+          {"ans" : "Помидор", "res" : false},
+          {"ans" : "Огурец", "res" : false}
+        ]
       },
       {
+        "id" : 10,
         "type" : "radio",
-        "title" : ,
-        "answers" : {
-          "" : true,
-          "" : false,
-          "" : false,
-          "" : false
-        }
+        "title" : "Практика",
+        "answers" : [
+          {"ans" : "Не знаю", "res" : true},
+          {"ans" : "Облом", "res" : false},
+          {"ans" : "Капут", "res" : false},
+          {"ans" : "Отпад", "res" : false}
+        ]
       }
   ]
