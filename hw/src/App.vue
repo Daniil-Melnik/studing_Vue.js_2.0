@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-if="true">
+        <div v-if="pg">
             <div v-for="q in questions">
                 <A v-if="q.id === qn"
                         :answers="q.answers"
@@ -15,13 +15,13 @@
             <button v-on:click="qn != 1 ? qn = qn - 1 : qn = qn">Назад</button>
             <button v-on:click="qn != 10 ? qn = qn + 1 : qn = qn">Вперёд</button>
         </div>
-        <!-- <div v-else>
+        <div v-else>
             <F 
             :questions="questions"
             :ganswers="gAnswers">
         </F>
-        </div> -->
-        <button v-if="qn === 10" v-on:click="qq">Отправить</button>
+        </div>
+        <button v-if="qn === 10" v-on:click="pg = !pg">Отправить</button>
     </div>
 </template>
 
@@ -34,7 +34,7 @@ export default {
         return{
             questions: json,
             qn : 1,
-            gAnswers: { 1 : [], 2 : [], 3 : [], 4 : [], 5 : [], 6 : [], 7 : [], 8 : [], 9 : [], 10 : []},
+            gAnswers: { 1 : [""], 2 : [""], 3 : [""], 4 : [""], 5 : [""], 6 : [""], 7 : [""], 8 : [""], 9 : [""], 10 : [""]},
             pg : true
         }
     },
@@ -48,12 +48,10 @@ export default {
                 this.gAnswers[i].push(s)
             }
         },
-        qq(){
-            console.log(this.gAnswers)
-        }
     },
     components: {
 		A,
+        F
 	}
 }
 </script>

@@ -18,7 +18,7 @@ export default {
     methods: {
         onChange(){
             this.$emit('senddata', this.qid, this.checkedAnswers, this.picked)
-            console.log(this.checkedAnswers)
+            console.log( this.qid + "-" + this.checkedAnswers + this.picked)
         }
     },
 }
