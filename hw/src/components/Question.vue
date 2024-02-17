@@ -13,12 +13,12 @@ export default {
         return{
             checkedAnswers: this.checked,
             picked: this.checked[0],
-            allAnswers: {}
         }
     },
     methods: {
         onChange(){
             this.$emit('senddata', this.qid, this.checkedAnswers, this.picked)
+            console.log(this.checkedAnswers)
         }
     },
 }

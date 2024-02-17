@@ -1,30 +1,41 @@
 <template>
     <div>
-        <div v-for="q in questions">
-            <A v-if="q.id === qn"
-                    :answers="q.answers"
-                    :title="q.title"
-                    :type="q.type"
-                    :qw_name="q.id"
-                    :qid="q.id"
-                    :checked="gAnswers[q.id]"
-                    @senddata = "receiveData">
-                </A>
+        <div v-if="true">
+            <div v-for="q in questions">
+                <A v-if="q.id === qn"
+                        :answers="q.answers"
+                        :title="q.title"
+                        :type="q.type"
+                        :qw_name="q.id"
+                        :qid="q.id"
+                        :checked="gAnswers[q.id]"
+                        @senddata = "receiveData">
+                    </A>
+            </div>
+            <button v-on:click="qn != 1 ? qn = qn - 1 : qn = qn">Назад</button>
+            <button v-on:click="qn != 10 ? qn = qn + 1 : qn = qn">Вперёд</button>
         </div>
-        <button v-on:click="qn != 1 ? qn = qn - 1 : qn = qn">Назад</button>
-        <button v-on:click="qn != 10 ? qn = qn + 1 : qn = qn">Вперёд</button>
+        <!-- <div v-else>
+            <F 
+            :questions="questions"
+            :ganswers="gAnswers">
+        </F>
+        </div> -->
+        <button v-if="qn === 10" v-on:click="qq">Отправить</button>
     </div>
 </template>
 
 <script>
 import A from "./components/Question"
+import F from "./components/Finish"
 import json from './recources/data.json'
 export default {
     data(){
         return{
             questions: json,
             qn : 1,
-            gAnswers: { 1 : [], 2 : [], 3 : [], 4 : [], 5 : [], 6 : [], 7 : [], 8 : [], 9 : [], 10 : []}
+            gAnswers: { 1 : [], 2 : [], 3 : [], 4 : [], 5 : [], 6 : [], 7 : [], 8 : [], 9 : [], 10 : []},
+            pg : true
         }
     },
     methods: {
@@ -36,11 +47,13 @@ export default {
                 this.gAnswers[i].splice(0, this.gAnswers[i].length);
                 this.gAnswers[i].push(s)
             }
-            console.log("answers: \n" + this.gAnswers[1])
+        },
+        qq(){
+            console.log(this.gAnswers)
         }
     },
     components: {
-		A
+		A,
 	}
 }
 </script>
