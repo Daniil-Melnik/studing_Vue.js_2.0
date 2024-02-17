@@ -1,0 +1,120 @@
+[
+    {
+      "id" : 1,
+      "type" : "radio",
+      "title" : "Где делают самовары, ружья и пряники?",
+      "answers" : [
+        {"ans" : "в Твери", "res" : false},
+        {"ans" : "где, где - в Вологде", "res" : false},
+        {"ans" : "в Москве", "res" : false},
+        {"ans" : "в Туле", "res" : true}
+      ],
+      "true" : ["в Туле"]
+    },
+    {
+        "id" : 2,
+        "type" : "radio",
+        "title" : "Как зовут кота у Булгакова?",
+        "answers" : [
+          {"ans" : "Бегемот", "res" : true},
+          {"ans" : "Пушистик", "res" : false},
+          {"ans" : "Алиса", "res" : false},
+          {"ans" : "Ферзь", "res" : false}
+        ],
+        "true" : ["Бегемот"]
+      },
+      {
+        "id" : 3,
+        "type" : "checkbox",
+        "title" : "Выберите из списка имена известных котов:",
+        "answers" : [
+          {"ans" : "Базилио", "res" : true},
+          {"ans" : "Мачак", "res" : true},
+          {"ans" : "Кашалот", "res" : false},
+          {"ans" : "Гав", "res" : true}
+        ],
+        "true" : ["Базилио", "Мачак", "Гав"]
+      },
+      {
+        "id" : 4,
+        "type" : "checkbox",
+        "title" : "Известные отечественые модели автомобилей",
+        "answers" : [
+          {"ans" : "Кузьмич", "res" : false},
+          {"ans" : "Приора", "res" : true},
+          {"ans" : "Жигули", "res" : true},
+          {"ans" : "Тольятти", "res" : false}
+        ],
+        "true" : ["Приора", "Жигули"]
+      },
+      {
+        "id" : 5,
+        "type" : "checkbox",
+        "title" : "Что кладут в рюкзак первокласснику?",
+        "answers" : [
+          {"ans" : "Линейку", "res" : true},
+          {"ans" : "Штангенциркуль", "res" : false},
+          {"ans" : "Фотоаппарат", "res" : false},
+          {"ans" : "Микроскоп", "res" : false}
+        ],
+        "true" : ["Линейку"]
+      },
+      {
+        "id" : 6,
+        "type" : "radio",
+        "title" : "Мичман в море, прапорщик на суше",
+        "answers" : [
+          {"ans" : "нет", "res" : false},
+          {"ans" : "да", "res" : true}
+        ],
+        "true" : ["да"]
+      },
+      {
+        "id" : 7,
+        "type" : "checkbox",
+        "title" : "Какие факультеты есть в ЛЭТИ?",
+        "answers" : [
+          {"ans" : "Кафедра ТУС", "res" : false},
+          {"ans" : "ФЭА", "res" : true},
+          {"ans" : "ФКТИ", "res" : true},
+          {"ans" : "ФЭЛ", "res" : true}
+        ],
+        "true" : ["ФЭА", "ФКТИ", "ФЭЛ"]
+      },
+      {
+        "id" : 8,
+        "type" : "checkbox",
+        "title" : "В каше из топора есть:",
+        "answers" : [
+          {"ans" : "Топор", "res" : true},
+          {"ans" : "Вода", "res" : true},
+          {"ans" : "Картошка", "res" : false},
+          {"ans" : "Сало", "res" : true}
+        ],
+        "true" : ["Топор", "Вода", "Сало"]
+      },
+      {
+        "id" : 9,
+        "type" : "radio",
+        "title" : "В Петербургском метрополитене __ станций",
+        "answers" : [
+          {"ans" : "59", "res" : false},
+          {"ans" : "61", "res" : false},
+          {"ans" : "72", "res" : true},
+          {"ans" : "69", "res" : false}
+        ],
+        "true" : ["72"]
+      },
+      {
+        "id" : 10,
+        "type" : "radio",
+        "title" : "Дважды два ____",
+        "answers" : [
+          {"ans" : "Четыре", "res" : true},
+          {"ans" : "Восемь", "res" : false},
+          {"ans" : "Три", "res" : false},
+          {"ans" : "Не знаю", "res" : false}
+        ],
+        "true" : ["Четыре"]
+      }
+  ]
