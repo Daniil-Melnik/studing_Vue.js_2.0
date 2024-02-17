@@ -6,7 +6,9 @@
                     :title="q.title"
                     :type="q.type"
                     :qw_name="q.id"
-                    :qid="q.id">
+                    :qid="q.id"
+                    :checked="gAnswers[q.id]"
+                    @senddata = "receiveData">
                 </A>
         </div>
         <button v-on:click="qn != 1 ? qn = qn - 1 : qn = qn">Назад</button>
@@ -21,12 +23,21 @@ export default {
     data(){
         return{
             questions: json,
-            qn : 3,
+            qn : 1,
             gAnswers: { 1 : [], 2 : [], 3 : [], 4 : [], 5 : [], 6 : [], 7 : [], 8 : [], 9 : [], 10 : []}
         }
     },
     methods: {
-        //receiveData(s, n)
+        receiveData(i, arr, s){
+            if ((arr == [] && s === "") || (arr != [] && s === "")){
+                this.gAnswers[i] = arr
+            }
+            else {
+                this.gAnswers[i].splice(0, this.gAnswers[i].length);
+                this.gAnswers[i].push(s)
+            }
+            console.log("answers: \n" + this.gAnswers[1])
+        }
     },
     components: {
 		A
