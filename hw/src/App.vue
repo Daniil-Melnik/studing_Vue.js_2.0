@@ -21,7 +21,8 @@
             :ganswers="gAnswers">
         </F>
         </div>
-        <button v-if="qn === 10" v-on:click="pg = !pg">Отправить</button>
+        <!-- <button v-if="qn === 10" v-on:click="pg = !pg">Отправить</button> -->
+        <button v-on:click="pg = !pg">Отправить</button>
     </div>
 </template>
 
