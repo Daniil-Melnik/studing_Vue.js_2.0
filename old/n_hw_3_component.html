@@ -14,7 +14,7 @@
 <body>
     <div class="wrapper">
         <div class="sample">
-			<div v-if="pg">
+			<div :class="[clName1]">
 				<form>
 					<div class="progress-n">
 						<div class="progress-bar-n"> <!-- class all width of progress bar (grey + blue) -->
@@ -33,11 +33,11 @@
 								@senddata = "receiveData"></cinput>
 					</div>
 				</form>
-				<button class="btn btn-primary" :disabled='isBarBlocked' v-on:click="pg = !pg">
+				<button class="btn btn-primary" v-on:click="chngClName">
 					Send Data
 				</button>
 			</div>
-			<div v-else>
+			<div :class = "[clName2]">
 				<table class="table table-bordered">
 					<tr>
 						<th>Name</th>
@@ -61,6 +61,7 @@
 					</tr>
 				</table>
 			</div>
+			<!-- <button class="btn btn-primary" :disabled='isBarBlocked' v-on:click="chngClName"> -->
 		</div>
     </div>
 	<script>
@@ -134,6 +135,8 @@
 				userData: {'name': "", 'phone': "", 'email': "", 'sf1': "", 'sf2': ""},
 				isBarBlocked: true,
 				pg: true,
+				clName1 : "main_pg_active",
+				clName2 : "pg_passive",
 				progressNo: "progressNo_0",
 				spn: 0,
 				isContact: {'name' : false, 'phone' : false, 'sf1' : false, 'sf2' : false, 'email' : false},
@@ -185,6 +188,10 @@
 					this.findNumOfTrue() // controls for progress-bar
 					this.chngFieldsNo()
 					this.spn === 5 ? this.isBarBlocked = false : this.isBarBlocked = true // control of blocking of bar
+				},
+				chngClName(){
+					this.clName1 = "main_pg_passive"
+					this.clName2 = "pg_active"
 				}
 			}
 		});

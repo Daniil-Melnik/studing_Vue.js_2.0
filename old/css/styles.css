@@ -80,11 +80,11 @@
 	border-radius:4px;
 	-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075);
 	box-shadow:inset 0 1px 1px rgba(0,0,0,.075);
-	-webkit-transition:border-color ease-in-out .15s,
-	-webkit-box-shadow ease-in-out .15s;
-	-o-transition:border-color ease-in-out .15s,
-	box-shadow ease-in-out .15s;
-	transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s
+	-webkit-transition:border-color ease-in-out .45s,
+	-webkit-box-shadow ease-in-out .45s;
+	-o-transition:border-color ease-in-out .45s,
+	box-shadow ease-in-out .45s;
+	transition:border-color ease-in-out .45s,box-shadow ease-in-out .45s
 }
 
 .form-control-bad {
@@ -101,11 +101,11 @@
 	border-radius:4px;
 	-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075);
 	box-shadow:inset 1px 1px 1px rgb(255, 0, 0);
-	-webkit-transition:border-color ease-in-out .15s,
-	-webkit-box-shadow ease-in-out .15s;
-	-o-transition:border-color ease-in-out .15s,
-	box-shadow ease-in-out .15s;
-	transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s
+	-webkit-transition:border-color ease-in-out .45s,
+	-webkit-box-shadow ease-in-out .45s;
+	-o-transition:border-color ease-in-out .45s,
+	box-shadow ease-in-out .45s;
+	transition:border-color ease-in-out .45s,box-shadow ease-in-out .15s
 }
 
 .form-control-good {
@@ -122,16 +122,17 @@
 	border-radius:4px;
 	-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075);
 	box-shadow:inset 0 1px 1px rgb(0, 181, 24);
-	-webkit-transition:border-color ease-in-out .15s,
-	-webkit-box-shadow ease-in-out .15s;
-	-o-transition:border-color ease-in-out .15s,
-	box-shadow ease-in-out .15s;
-	transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s
+	-webkit-transition:border-color ease-in-out .45s,
+	-webkit-box-shadow ease-in-out .45s;
+	-o-transition:border-color ease-in-out .45s,
+	box-shadow ease-in-out .45s;
+	transition:border-color ease-in-out .45s,box-shadow ease-in-out .45s
 }
 
 .ok_img {
 	width: 12px;
 	height: 12px;
+	transition: 5s;
 }
 
 .alert-info {
@@ -144,3 +145,42 @@
   	overflow-y: scroll;
 	height: 400px;
 }
+
+.test {
+    width: 100px;
+    height: 100px;
+    background-color: brown;
+	transition: 1s;
+  }
+
+  .test:hover {
+    background-color: aqua;
+    transform: rotateY(180deg);
+  }
+
+  .main_pg_active {
+	opacity: 1;
+	z-index: 1;
+  }
+
+  .main_pg_passive {
+	opacity: 0;
+	height: 0;
+	z-index: -1;
+  }
+
+  .pg_active {
+	margin-top: 0;
+	opacity: 1;
+	transition: 55s;
+	z-index: 5;
+  }
+
+  .pg_passive {
+	margin-top: 500px;
+	margin-left: 300px;
+	opacity: 0;
+	transition: 5s;
+	height: 0;
+	z-index: -5;
+  }
