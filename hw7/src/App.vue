@@ -1,52 +1,75 @@
 <template>
-  
   <div>
-    <router-link :to="{ name: 'Cart' }">
+    <router-link v-if="showCartLink" :to="{ name: 'Cart' }">
       <a>Карта</a>
     </router-link>
-    <router-view />
-</div>
 
+    <div class="col col-sm-9">
+      <router-view v-slot="{ Component }">
+        <transition name="slide" mode="out-in">
+          <component :is="Component || 'div'" />
+        </transition>
+      </router-view>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
-  
-
   name: 'App',
-
-  data(){
-    return{
-      menuList: [
-			{
-				url: '/products',
-				text: 'Products List'
-			},
-			{
-				url: '/cart',
-				text: 'Your Cart'
-			},
-			{
-				url: '/checkout',
-				text: 'Order Now'
-			}
-		]
-    }
+  data() {
+    return {
+      showCartLink: true,
+    };
   },
-
-  components: {
-    
-  }
-}
+  created() {
+    this.$router.afterEach((to) => {
+      if (to.name === 'Cart') {
+        this.showCartLink = false;
+      } else {
+        this.showCartLink = true;
+      }
+    });
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.slide-enter {
+}
+
+.slide-enter-active {
+  animation: slideIn 0.5s;
+}
+
+.slide-enter-to {
+}
+
+.slide-leave {
+}
+
+.slide-leave-active {
+  animation: slideOut 0.5s;
+}
+
+.slide-leave-to {
+}
+
+@keyframes slideIn {
+  from {
+    transform: rotateY(90deg);
+  }
+  to {
+    transform: rotateY(0deg);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(90deg);
+  }
 }
 </style>
