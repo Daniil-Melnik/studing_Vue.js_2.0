@@ -2,11 +2,11 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-    userName: "qq",
-	userPhone: "",
-	userEmail: "",
-    userSf1: "",
-    userSf2: ""
+    userName: "Ivan Ivanov",
+	userPhone: "88005553555",
+	userEmail: "I@I.ru",
+    userSf1: "Some info",
+    userSf2: "Some info"
   }, 
   mutations: {
     upd(state, data){

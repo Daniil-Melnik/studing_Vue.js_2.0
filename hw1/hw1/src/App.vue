@@ -21,12 +21,12 @@
               @senddata = "receiveData"></cinput>
         </div>
       </form>
-      <button class="btn btn-primary" v-on:click="chngClName">
+      <button class="btn-primary" v-on:click="chngClName">
         Send Data
       </button>
     </div>
     <div :class = "[clName2]">
-      <table class="table table-bordered">
+      <table class="table-bordered">
         <tr>
           <th>Name</th>
           <td>{{ userData['name'] }}</td>
@@ -232,5 +232,34 @@ export default {
 	transition:0.5s;
 	height: 0;
 	z-index: -5;
+  }
+
+  .btn-primary {
+    width: 80px;
+    height: 40px;
+    background-color: rgb(0, 0, 92);
+    color: aliceblue;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border: none;
+    border-radius: 8px;
+    margin-top: 5px;
+  }
+
+  .table-bordered{
+    border: 0px;
+    border-collapse: collapse;
+    width: 500px;
+    height: 300px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+
+  .table-bordered td{
+    border: 1px solid silver;
+    border-radius: 5px;
+  }
+
+  .table-bordered th{
+    border: 1px solid silver;
+    border-radius: 5px;
   }
 </style>

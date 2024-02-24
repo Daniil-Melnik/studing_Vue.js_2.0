@@ -1,8 +1,6 @@
 <template>
     <div class="form-group">
-        <!-- <label>{{maintext}}<img v-if="K" :src="[isContactImg]"  class="ok_img"/></label> -->
         <label>{{maintext}}<img v-if="K" :src="require(`@/assets/${isContactImg}`)" class="ok_img"/></label>
-        
         <input type="text" v-on:input="controlText($event.target.value)" :class="[isContactStyle]">
     </div>
 </template>
@@ -117,6 +115,14 @@
 	width: 12px;
 	height: 12px;
 	transition: 5s;
+}
+
+label {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.form-group {
+    margin-top: 8px;
 }
 
 </style>
