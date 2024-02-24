@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <!-- <div>
     <router-link v-if="showCartLink" :to="{ name: 'Cart' }">
       <a>Карта</a>
     </router-link>
@@ -11,18 +11,20 @@
         </transition>
       </router-view>
     </div>
-  </div>
+  </div> -->
+  <Main></Main>
 </template>
 
 <script>
+import Main from './components/Main.vue'
 export default {
   name: 'App',
   data() {
     return {
-      showCartLink: true,
+      //showCartLink: true,
     };
   },
-  created() {
+  /*created() {
     this.$router.afterEach((to) => {
       if (to.name === 'Cart') {
         this.showCartLink = false;
@@ -30,7 +32,10 @@ export default {
         this.showCartLink = true;
       }
     });
-  },
+  },*/
+  components: {
+    Main
+  }
 };
 </script>
 
