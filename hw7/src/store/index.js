@@ -20,11 +20,17 @@ export default createStore({
       {id: 7, name: "Спички", price: 3, img: "7.png"},
       {id: 8, name: "Малина", price: 2, img: "8.png"},
       {id: 9, name: "Черника", price: 5, img: "9.png"}
-    ]
+    ],
+    userData: {'name' : "", 'cardnum': "", 'emai': ""}
   }, 
   mutations: {
     upd(state, data){
       state.cart = data.cart
-  }
+  },
+  updUser(state, data){
+    state.name = data.name
+    state.cardnum = data.cardnum
+    state.userEmail = data.email
+}
 },
 })

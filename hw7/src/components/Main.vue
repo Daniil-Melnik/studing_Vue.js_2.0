@@ -1,9 +1,10 @@
 <template>
     <div>
-        <div v-if="showCartLink">
+        <div v-if="true">
             <button @click="onOrder">Карта</button>
             <button @click="onProduct">Продукт</button>
             <button @click="onProductList">Каталог</button>
+            <button @click="onCheckOut">Оформление</button>
         </div>
         
     
@@ -35,6 +36,9 @@
 			},
             onProductList(){
 				this.$router.push('/ProductList');
+			},
+            onCheckOut(){
+				this.$router.push('/Checkout');
 			}
         },
         created() {

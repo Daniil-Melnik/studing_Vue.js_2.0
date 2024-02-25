@@ -2,6 +2,7 @@ import { createWebHistory, createRouter } from 'vue-router'
 import Cart from '@/components/Cart.vue'
 import Product from '@/components/Product.vue'
 import ProductList from '@/components/ProductsList.vue'
+import Checkout from '@/components/Checkout.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -19,6 +20,11 @@ const router = createRouter({
     {
       path: '/products/:id',
       component: Product
+    },
+    {
+      path: '/Checkout',
+      name: "checkout",
+      component: Checkout
     },
   ]
 })
