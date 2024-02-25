@@ -40,24 +40,13 @@ export default {
 </script>
 
 <style>
-.slide-enter {
-}
 
 .slide-enter-active {
   animation: slideIn 0.5s;
 }
 
-.slide-enter-to {
-}
-
-.slide-leave {
-}
-
 .slide-leave-active {
   animation: slideOut 0.5s;
-}
-
-.slide-leave-to {
 }
 
 @keyframes slideIn {

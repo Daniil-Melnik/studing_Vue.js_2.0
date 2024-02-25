@@ -3,6 +3,7 @@
         <div v-if="showCartLink">
             <button @click="onOrder">Карта</button>
             <button @click="onProduct">Продукт</button>
+            <button @click="onProductList">Каталог</button>
         </div>
         
     
@@ -31,11 +32,14 @@
 			},
             onProduct(){
 				this.$router.push('/Product');
+			},
+            onProductList(){
+				this.$router.push('/ProductList');
 			}
         },
         created() {
         this.$router.afterEach((to) => {
-        if (to.name === 'Cart' | to.name === 'Product') {
+        if (to.name === 'Cart' | to.name === 'Product' | to.name === "ProductList") {
             this.showCartLink = false;
         } else {
             this.showCartLink = true;
