@@ -3,7 +3,7 @@
         <div  v-if="showCartLink">
         <h1>Магазин товаров</h1>
         <div class="main-container">
-            <router-link :to = "{ name: 'Cart'}" class="qq1"><div class="qq"><p>Карта</p></div></router-link>         
+            <router-link :to = "{ name: 'Cart'}" class="qq1"><div class="qq"><p>Корзина</p></div></router-link>         
             <router-link :to = "{ name:'ProductList'}" class="qq1"><div class="qq"><p>Каталог</p></div></router-link>            
             <router-link :to = "{ name:'Checkout'}" class="qq1"><div class="qq"><p>Оформление</p></div></router-link>
         </div>
