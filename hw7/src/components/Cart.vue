@@ -31,7 +31,8 @@
 			</tr>
 		</table>
 		</div>
-		<button class="before-btn" @click="goBack">Назад</button>
+		<p><button class="checkout-btn" @click="onCheckOut">Оформить</button></p>
+		<p><button class="before-btn"  @click="goBack">Назад</button></p>
 	</div>
 </template>
 
@@ -76,6 +77,10 @@ export default {
 			this.updSumm()
 			console.log(this.$route.name)
 		},
+
+		onCheckOut(){
+				this.$router.push('/Checkout');
+			},
 	}
 }
 </script>
@@ -195,11 +200,31 @@ export default {
 	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 	color: rgb(0, 17, 61);
 	transition: 0.6s;
+	margin-left: 45.55%;
+	margin-top: 5px;
+}
+
+.before-btn:hover {
+	background-color: rgb(0, 17, 61);
+	color: rgb(203, 229, 255);
+	transform: scale(1.3);
+}
+
+.checkout-btn{
+	height: 43px;
+	width: 100px;
+	margin-left: 8px;
+	border: 0;
+	background-color: rgb(124, 190, 255);
+	border-radius: 10px;
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	color: rgb(0, 17, 61);
+	transition: 0.6s;
 	margin-left: 45%;
 	margin-top: 25px;
 }
 
-.before-btn:hover {
+.checkout-btn:hover {
 	background-color: rgb(0, 17, 61);
 	color: rgb(203, 229, 255);
 	transform: scale(1.3);

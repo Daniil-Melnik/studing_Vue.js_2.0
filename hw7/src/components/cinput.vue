@@ -125,4 +125,8 @@ label {
     margin-top: 8px;
 }
 
+input {
+	font-size: 20px;
+}
+
 </style>

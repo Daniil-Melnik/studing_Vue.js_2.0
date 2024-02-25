@@ -3,6 +3,7 @@
       <div class="wrapper">
         <div class="sample">
       <div v-if="dataPg">
+        <h3>Заполните Ваши данные:</h3>
         <form>
           <div class="progress-n">
             <div class="progress-bar-n">
@@ -18,11 +19,11 @@
           </div>
         </form>
         <button class="btn-primary" :disabled="isBarBlocked" v-on:click="dataPg = !dataPg">
-          Send Data
+          Отправить
         </button>
       </div>
       <div v-else>
-        <p>Данные отправлены</p>
+        <p class="sended">Заказ оформлен</p>
       </div>
     </div>
     </div>
@@ -124,7 +125,7 @@
       width: 0%;
       height: 20px;
       border-radius: 4px;
-      background-color: rgb(53, 122, 181);
+      background-color: rgb(0, 41, 145);
       transition: 0.3s;
   }
   
@@ -132,7 +133,7 @@
       width: 33%;
       height: 20px;
       border-radius: 4px;
-      background-color: rgb(53, 122, 181);
+      background-color: rgb(0, 41, 145);
       transition: 0.3s;
   }
   
@@ -140,7 +141,7 @@
       width: 66%;
       height: 20px;
       border-radius: 4px;
-      background-color: rgb(53, 122, 181);
+      background-color: rgb(0, 41, 145);
       transition: 0.3s;
   }
   
@@ -148,7 +149,7 @@
       width: 100%;
       height: 20px;
       border-radius: 4px;
-      background-color: rgb(53, 122, 181);
+      background-color: rgb(0, 41, 145);
       transition: 0.3s;
   }
   
@@ -188,6 +189,13 @@
       border: none;
       border-radius: 8px;
       margin-top: 5px;
+      transition: 0.6s;
+    }
+
+    .btn-primary:hover {
+      background-color: aliceblue;
+      color: rgb(0, 0, 92);
+      transform: scale(1.2);
     }
   
     .table-bordered{
@@ -206,5 +214,19 @@
     .table-bordered th{
       border: 1px solid silver;
       border-radius: 5px;
+    }
+
+    h3 {
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      font-size: 20px;
+      color: rgb(0, 17, 61);
+      text-align: center;
+    }
+
+    .sended {
+      text-align: center;
+      color: rgb(0, 0, 92);
+      font-size: 30px;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     }
   </style>
