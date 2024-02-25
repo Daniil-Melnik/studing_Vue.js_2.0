@@ -19,6 +19,9 @@
 				>
 					Убрать
 				</button>
+				<router-link :to="'/products/' + product.id ">
+					Подробнее
+				</router-link>
 			</div>
 		</div>
 	</div>
@@ -50,12 +53,15 @@
 			},
 			removeFromCart(i, cart){
 				cart = cart.filter(c => c.id !== i);
-				this.$store.commit('upd', cart)
+				this.$store.commit('upd', {cart: cart})
+				console.log(this.$store.cart)
 			},
 
 			addToCart(product, cart){
-				cart = cart.push(product)
-				this.$store.commit('upd', cart)
+				cart.push(product)
+				console.log(cart)
+				this.$store.commit('upd', {cart: cart})
+				console.log(this.$store.cart)
 			}
 		}
 	}
