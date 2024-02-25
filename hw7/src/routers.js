@@ -19,11 +19,12 @@ const router = createRouter({
     },
     {
       path: '/products/:id',
+      name: 'Product',
       component: Product
     },
     {
       path: '/Checkout',
-      name: "checkout",
+      name: "Checkout",
       component: Checkout
     },
   ]

@@ -47,7 +47,7 @@
 		removeFromCart(i, cart){
 				cart = cart.filter(c => c.id !== i);
 				this.$store.commit('upd', {cart: cart})
-				console.log(this.$store.cart)
+				console.log(this.$route.name)
 			},
 
 		addToCart(product, cart){
